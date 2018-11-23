@@ -1,2 +1,2 @@
-import ListarPoneysScreen from "./src/components/ListarPoneysScreen";
-export default ListarPoneysScreen;
+import CoponeyMob from "./src/CoponeyMob";
+export default CoponeyMob;
