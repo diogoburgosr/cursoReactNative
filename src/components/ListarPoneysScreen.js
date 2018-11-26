@@ -1,35 +1,22 @@
 import { Left, ListItem, Text } from "native-base";
+
+import PropTypes from "prop-types";
+
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 
-class ListarPoneysScreen extends React.Component {
-  poneys = [
-    { nome: "Tremor" },
-    { nome: "Tzar" },
-    { nome: "Pégaso" },
-    { nome: "Epone" },
-    { nome: "Macedonio" },
-    { nome: "Vicário" },
-    { nome: "Tro" },
-    { nome: "Nicanor" },
-    { nome: "Niceto" },
-    { nome: "Odón" },
-    { nome: "Relâmpago" },
-    { nome: "Pio" },
-    { nome: "Elegante" },
-    { nome: "Pompeu" }
-  ];
+import { connect } from "react-redux";
 
+class ListarPoneysScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.poneys = this.poneys.map((p, idx) => ({ ...p, _id: idx + "" }));
   }
 
   render() {
     return (
       <View>
         <FlatList
-          data={this.poneys}
+          data={this.props.poneys.list}
           renderItem={({ item }) => (
             <ListItem noIdent>
               <Left>
@@ -58,4 +45,19 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ListarPoneysScreen;
+const mapStateToProps = state => {
+  return {
+    poneys: state.poneys
+  };
+};
+
+const mapDispatchToProps = {};
+
+ListarPoneysScreen.propTypes = {
+  poneys: PropTypes.object
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListarPoneysScreen);
