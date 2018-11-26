@@ -143,7 +143,9 @@ const styles = StyleSheet.create({
 
 HeaderButtonsComponent.propTypes = {
   profile: PropTypes.object,
-  poneys: PropTypes.object
+  poneys: PropTypes.object,
+  login: PropTypes.func,
+  logout: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -155,11 +157,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ login, logout }, dispatch);
-
-HeaderButtonsComponent.propTypes = {
-  login: PropTypes.func,
-  logout: PropTypes.func
-};
 
 export default connect(
   mapStateToProps,
