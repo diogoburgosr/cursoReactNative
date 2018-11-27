@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "emulator": "emulator -avd Nexus_5X_API_28 -no-snapshot",
-    "logcat": "adb logcat"
+    "logcat": "adb logcat",
+    "reverse9090": "adb reverse tcp:9090 tcp:9090"
   },
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
@@ -26,6 +27,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "reactotron-react-native": "^2.1.0"
+    "reactotron-react-native": "^2.1.0",
+    "reactotron-redux": "^2.1.0"
   }
 }

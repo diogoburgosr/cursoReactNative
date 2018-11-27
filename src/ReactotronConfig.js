@@ -1,5 +1,8 @@
 import Reactotron from "reactotron-react-native";
+import { reactotronRedux } from "reactotron-redux";
 
-Reactotron.configure({ port: 9090 })
-  .useReactNative()
+const reactotron = Reactotron.configure({ port: 9090 })
+  .use(reactotronRedux())
   .connect();
+
+export default reactotron;

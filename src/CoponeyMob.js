@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import configureStore from "./configureStore";
 import Reactotron from "reactotron-react-native";
 import CoponeyMobNav from "./CoponeyMobNav";
-import "./ReactotronConfig";
+//import "./ReactotronConfig";
 import { Spinner } from "native-base";
 
 import { Provider } from "react-redux";
-import configureStore from "./configureStore";
 
 Reactotron.log("Testando a conexão com o Reactotron.");
 
