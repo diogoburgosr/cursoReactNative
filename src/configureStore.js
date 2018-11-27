@@ -1,8 +1,9 @@
 import rootReducer from "./reducers";
 import Reactotron from "./ReactotronConfig";
-import { applyMiddleware } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import thunk from "redux-thunk";
 
 export default function configureStore() {
-  const store = Reactotron.createStore(rootReducer, applyMiddleware());
+  const store = Reactotron.createStore(rootReducer, applyMiddleware(thunk));
   return store;
 }
