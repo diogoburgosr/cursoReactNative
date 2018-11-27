@@ -1,5 +1,16 @@
-import { LOAD_PONEYS, LOGIN, LOGOUT } from "./constants";
+import {
+  LOAD_PONEYS,
+  LOGIN,
+  LOGOUT,
+  TOGGLE_VIEW_DELETED_PONEYS
+} from "./constants";
 import { loadPoneysAPI } from "./api";
+
+export function toggleViewDeletedPoneys() {
+  return {
+    type: TOGGLE_VIEW_DELETED_PONEYS
+  };
+}
 
 export function login(data) {
   return {
