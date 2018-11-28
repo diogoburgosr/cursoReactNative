@@ -41,29 +41,33 @@ class MantemPoneyForm extends React.Component {
 
   renderPick = ({
     input: { onChange, value, ...inputProps },
+    meta: { error },
     ...pickerProps
   }) => {
     return (
-      <Item picker>
-        <Picker
-          selectedValue={value}
-          onValueChange={value => onChange(value)}
-          {...inputProps}
-          {...pickerProps}
-          mode="dropdown"
-          iosIcon={<Icon name="ios-arrow-down-outline" />}
-          style={{ width: undefined }}
-          placeholder="Selecione a cor"
-          placeholderStyle={{ color: "#bfc6ea" }}
-          placeholderIconColor="#007aff"
-        >
-          <Picker.Item label="Selecione a cor" value="" />
-          <Picker.Item label="Amarelo" value="Amarelo" />
-          <Picker.Item label="Baio" value="Baio" />
-          <Picker.Item label="Branco" value="Branco" />
-          <Picker.Item label="Preto" value="Preto" />
-        </Picker>
-      </Item>
+      <View>
+        {error && <Text>{error}</Text>}
+        <Item picker>
+          <Picker
+            selectedValue={value}
+            onValueChange={value => onChange(value)}
+            {...inputProps}
+            {...pickerProps}
+            mode="dropdown"
+            iosIcon={<Icon name="ios-arrow-down-outline" />}
+            style={{ width: undefined }}
+            placeholder="Selecione a cor"
+            placeholderStyle={{ color: "#bfc6ea" }}
+            placeholderIconColor="#007aff"
+          >
+            <Picker.Item label="Selecione a cor" value="" />
+            <Picker.Item label="Amarelo" value="Amarelo" />
+            <Picker.Item label="Baio" value="Baio" />
+            <Picker.Item label="Branco" value="Branco" />
+            <Picker.Item label="Preto" value="Preto" />
+          </Picker>
+        </Item>
+      </View>
     );
   };
 

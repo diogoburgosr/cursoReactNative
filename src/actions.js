@@ -2,10 +2,25 @@ import {
   LOAD_PONEYS,
   LOGIN,
   LOGOUT,
-  TOGGLE_VIEW_DELETED_PONEYS
+  TOGGLE_VIEW_DELETED_PONEYS,
+  ADD_PONEY
 } from "./constants";
-import { loadPoneysAPI } from "./api";
+import { loadPoneysAPI, addPoneyAPI } from "./api";
 
+export function addPoney(data) {
+  return dispatch => {
+    addPoneyAPI(data)
+      .then(res => {
+        dispatch({
+          type: ADD_PONEY,
+          data: { ...data, _id: res.body }
+        });
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  };
+}
 export function toggleViewDeletedPoneys() {
   return {
     type: TOGGLE_VIEW_DELETED_PONEYS

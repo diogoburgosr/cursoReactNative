@@ -1,9 +1,10 @@
 import { Text } from "native-base";
 import React from "react";
 import { connect } from "react-redux";
-
 import PropTypes from "prop-types";
 import MantemPoneyForm from "./MantemPoneyForm";
+import { bindActionCreators } from "redux";
+import { addPoney } from "../actions";
 
 class AdicionarPoneyScreen extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class AdicionarPoneyScreen extends React.Component {
   }
 
   handleAddPoney = poney => {
-    alert("Ponei adicionado: " + JSON.stringify(poney));
+    this.props.addPoney(poney);
     this.props.navigation.navigate("ListarPoneys");
   };
 
@@ -26,11 +27,13 @@ class AdicionarPoneyScreen extends React.Component {
 }
 
 AdicionarPoneyScreen.propTypes = {
+  addPoney: PropTypes.func,
   navigation: PropTypes.object
 };
 
 const mapStateToProps = () => ({});
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ addPoney }, dispatch);
 
 export default connect(
   mapStateToProps,
