@@ -30,7 +30,7 @@ class ListarPoneysScreen extends React.Component {
             <ListItem noIdent>
               <Left>
                 <Text
-                  style={[styles.item, item.excluido ? styles.tachado : ""]}
+                  style={[styles.item, item.excluido && styles.tachado]}
                 >
                   {item.nome}
                 </Text>
