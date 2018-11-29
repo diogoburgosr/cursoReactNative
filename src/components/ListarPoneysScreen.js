@@ -33,6 +33,8 @@ class ListarPoneysScreen extends React.Component {
         <FlatList
           data={listExibicao}
           extraData={this.props.profile}
+          onRefresh={this.props.loadPoneys}
+          refreshing={this.props.profile.loading}
           renderItem={({ item }) => (
             <ListItem noIdent>
               <Left>

@@ -5,7 +5,8 @@ import {
   TOGGLE_VIEW_DELETED_PONEYS,
   ADD_PONEY,
   UPDATE_PONEY,
-  DELETE_PONEY
+  DELETE_PONEY,
+  SET_LOADING_STATUS
 } from "./constants";
 import {
   loadPoneysAPI,
@@ -16,6 +17,10 @@ import {
 
 export function deletePoney(id) {
   return dispatch => {
+    dispatch({
+      type: SET_LOADING_STATUS,
+      data: true
+    });
     deletePoneyAPI(id)
       .then(() => {
         dispatch({
@@ -25,12 +30,22 @@ export function deletePoney(id) {
       })
       .catch(error => {
         alert(error.message);
+      })
+      .finally(() => {
+        dispatch({
+          type: SET_LOADING_STATUS,
+          data: false
+        });
       });
   };
 }
 
 export function updatePoney(data) {
   return dispatch => {
+    dispatch({
+      type: SET_LOADING_STATUS,
+      data: true
+    });
     updatePoneyAPI(data)
       .then(() => {
         dispatch({
@@ -40,12 +55,22 @@ export function updatePoney(data) {
       })
       .catch(erro => {
         alert(error.message);
+      })
+      .finally(() => {
+        dispatch({
+          type: SET_LOADING_STATUS,
+          data: false
+        });
       });
   };
 }
 
 export function addPoney(data) {
   return dispatch => {
+    dispatch({
+      type: SET_LOADING_STATUS,
+      data: true
+    });
     addPoneyAPI(data)
       .then(res => {
         dispatch({
@@ -55,6 +80,12 @@ export function addPoney(data) {
       })
       .catch(error => {
         alert(error.message);
+      })
+      .finally(() => {
+        dispatch({
+          type: SET_LOADING_STATUS,
+          data: false
+        });
       });
   };
 }
@@ -79,6 +110,10 @@ export function logout() {
 
 export function loadPoneys() {
   return dispatch => {
+    dispatch({
+      type: SET_LOADING_STATUS,
+      data: true
+    });
     loadPoneysAPI()
       .then(res => {
         dispatch({
@@ -88,6 +123,12 @@ export function loadPoneys() {
       })
       .catch(error => {
         alert(error.message);
+      })
+      .finally(() => {
+        dispatch({
+          type: SET_LOADING_STATUS,
+          data: false
+        });
       });
   };
 }
