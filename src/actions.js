@@ -4,9 +4,30 @@ import {
   LOGOUT,
   TOGGLE_VIEW_DELETED_PONEYS,
   ADD_PONEY,
-  UPDATE_PONEY
+  UPDATE_PONEY,
+  DELETE_PONEY
 } from "./constants";
-import { loadPoneysAPI, addPoneyAPI, updatePoneyAPI } from "./api";
+import {
+  loadPoneysAPI,
+  addPoneyAPI,
+  updatePoneyAPI,
+  deletePoneyAPI
+} from "./api";
+
+export function deletePoney(id) {
+  return dispatch => {
+    deletePoneyAPI(id)
+      .then(() => {
+        dispatch({
+          type: DELETE_PONEY,
+          data: id
+        });
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  };
+}
 
 export function updatePoney(data) {
   return dispatch => {
