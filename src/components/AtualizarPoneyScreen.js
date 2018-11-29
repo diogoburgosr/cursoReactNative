@@ -3,13 +3,17 @@ import React from "react";
 import { connect } from "react-redux";
 import MantemPoneyForm from "./MantemPoneyForm";
 
+import { bindActionCreators } from "redux";
+import { updatePoney } from "../actions";
+
 class AtualizarPoneyScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
   handleUpdatePoney = poney => {
-    alert("Atualizar ponei: " + JSON.stringify(poney));
+    this.props.updatePoney(poney);
+    this.props.navigation.navigate("ListarPoneys");
   };
 
   render() {
@@ -29,7 +33,13 @@ AtualizarPoneyScreen.propTypes = {
 };
 
 const mapStateToProps = () => ({});
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      updatePoney
+    },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,

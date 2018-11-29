@@ -3,9 +3,25 @@ import {
   LOGIN,
   LOGOUT,
   TOGGLE_VIEW_DELETED_PONEYS,
-  ADD_PONEY
+  ADD_PONEY,
+  UPDATE_PONEY
 } from "./constants";
-import { loadPoneysAPI, addPoneyAPI } from "./api";
+import { loadPoneysAPI, addPoneyAPI, updatePoneyAPI } from "./api";
+
+export function updatePoney(data) {
+  return dispatch => {
+    updatePoneyAPI(data)
+      .then(() => {
+        dispatch({
+          type: UPDATE_PONEY,
+          data
+        });
+      })
+      .catch(erro => {
+        alert(error.message);
+      });
+  };
+}
 
 export function addPoney(data) {
   return dispatch => {
