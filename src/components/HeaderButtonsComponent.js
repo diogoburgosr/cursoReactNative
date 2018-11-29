@@ -9,12 +9,18 @@ import {
   View
 } from "native-base";
 import React from "react";
-import { Alert, Image, Modal, StyleSheet } from "react-native";
+import {
+  Alert,
+  Image,
+  Modal,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { login, logout, toggleViewDeletedPoneys } from "../actions";
+import { login, logout, toggleViewDeletedPoneys, loadPoneys } from "../actions";
 
 class HeaderButtonsComponent extends React.Component {
   constructor(props) {
@@ -104,6 +110,16 @@ class HeaderButtonsComponent extends React.Component {
   render() {
     return (
       <View style={styles.HeaderButtonContainer}>
+        <TouchableOpacity transparent onPress={this.props.loadPoneys}>
+          <Icon
+            style={[
+              { color: "blue" },
+              styles.headerIconFont,
+              styles.headerIconMargin
+            ]}
+            name="refresh"
+          />
+        </TouchableOpacity>
         <Button transparent onPress={this.props.toggleViewDeletedPoneys}>
           <Icon
             style={[styles.headerIconFont, styles.headerIconMargin]}
@@ -161,7 +177,8 @@ HeaderButtonsComponent.propTypes = {
   login: PropTypes.func,
   logout: PropTypes.func,
   toggleViewDeletedPoneys: PropTypes.func,
-  navigation: PropTypes.object
+  navigation: PropTypes.object,
+  loadPoneys: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -172,7 +189,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ login, logout, toggleViewDeletedPoneys }, dispatch);
+  bindActionCreators(
+    { login, logout, toggleViewDeletedPoneys, loadPoneys },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,
